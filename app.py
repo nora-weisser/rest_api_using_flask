@@ -1,7 +1,9 @@
 import os
+import secrets
 
 from flask import Flask
 from flask_smorest import Api
+from flask_jwt_extended import JWTManager
 
 from db import db
 import models
@@ -29,6 +31,9 @@ def create_app(db_url=None):
         db.create_all()
 
     api = Api(app)
+
+    app.config["JWT_SECRET_KEY"] = "jose"
+    jwt = JWTManager(app)
 
     api.register_blueprint(ItemBlueprint)
     api.register_blueprint(StoreBlueprint)
