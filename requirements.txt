@@ -5,3 +5,5 @@ passlib
 marshmallow
 python-dotenv
 gunicorn
+flask-migrate
+flask==2.3.3
